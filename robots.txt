@@ -1,0 +1,11 @@
+# Negocie Imobiliaria - Cynara Leles, CRECI 21.180, Jatai-GO
+# Tudo liberado de proposito: site de vitrine vive de ser encontrado.
+#
+# ATENCAO (10/09/2026): o endereco abaixo ainda e' o do GitHub Pages, porque o dominio
+# negocieimobiliaria.com.br ainda nao aponta pra ca (depende de um codigo de 8 digitos
+# que o Registro.br manda pro e-mail da Cynara). Quando o dominio for apontado, troque
+# a linha do Sitemap e as <loc> do sitemap.xml para https://negocieimobiliaria.com.br/.
+User-agent: *
+Allow: /
+
+Sitemap: https://lzleles.github.io/negocie-site/sitemap.xml

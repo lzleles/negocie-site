@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Enderecos provisorios do GitHub Pages ate o dominio proprio ser apontado (10/09/2026). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/comprar-casa-jatai.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/fazenda-a-venda-jatai.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/lotes-e-condominios-jatai.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/vender-meu-imovel-jatai.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/privacidade.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://lzleles.github.io/negocie-site/termos.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <priority>0.2</priority>
+  </url>
+</urlset>
