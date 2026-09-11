@@ -1,0 +1,467 @@
+/* =============================================================================
+   NEGOCIE IMOBILIÁRIA — folha de estilo v1
+   Cores e tipografia vêm do manual de marca (pasta Logo\, agosto/2026).
+   Nada de cor solta: tudo sai das variáveis abaixo.
+   ========================================================================== */
+
+:root {
+  /* Paleta oficial do manual */
+  --verde-escuro: #144846;
+  --verde-oliva:  #737937;
+  --dourado:      #ac892a;
+  --grafite:      #333f43;
+  --creme:        #f3efe4;
+
+  /* Derivadas — só clareamento/escurecimento das oficiais */
+  --verde-fundo:  #0e3533;
+  --creme-claro:  #faf8f3;
+  --dourado-claro:#c9a445;
+  --borda:        #e2dccd;
+  --texto:        #333f43;
+  --texto-suave:  #6b7276;
+  --zap:          #25d366;
+
+  --largura: 1180px;
+  --raio: 14px;
+  --sombra: 0 2px 4px rgba(20,72,70,.05), 0 12px 32px rgba(20,72,70,.08);
+  --sombra-alta: 0 4px 8px rgba(20,72,70,.06), 0 20px 48px rgba(20,72,70,.14);
+  --transicao: .22s cubic-bezier(.4,0,.2,1);
+
+  --fonte-titulo: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --fonte-texto:  'Montserrat', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+  margin: 0;
+  background: var(--creme-claro);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 700; line-height: 1.15; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.1rem, 5.2vw, 3.6rem); letter-spacing: -.02em; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); letter-spacing: -.01em; color: var(--verde-escuro); }
+h3 { font-size: 1.16rem; }
+p  { margin: 0 0 1em; }
+a  { color: var(--verde-escuro); text-decoration-color: rgba(172,137,42,.55); text-underline-offset: 3px; }
+img, svg { max-width: 100%; }
+
+.pular-para-conteudo {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--verde-escuro); color: #fff; padding: .8rem 1.2rem; border-radius: 0 0 8px 0;
+}
+.pular-para-conteudo:focus { left: 0; }
+
+/* ------------------------------------------------------------------ BOTÕES */
+.botao {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .78rem 1.5rem; border: 2px solid transparent; border-radius: 999px;
+  font-family: var(--fonte-titulo); font-weight: 600; font-size: .96rem;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: transform var(--transicao), box-shadow var(--transicao), background var(--transicao);
+}
+.botao:hover { transform: translateY(-2px); }
+.botao--grande { padding: 1rem 1.9rem; font-size: 1.03rem; }
+
+.botao--zap { background: var(--verde-escuro); color: #fff; box-shadow: var(--sombra); }
+.botao--zap:hover { background: #1a5b58; box-shadow: var(--sombra-alta); }
+
+.botao--vazado { border-color: currentColor; color: var(--creme); background: transparent; }
+.botao--vazado:hover { background: rgba(243,239,228,.12); }
+
+.icone-zap { width: 20px; height: 20px; fill: currentColor; flex: none; }
+
+/* --------------------------------------------------------------- CABEÇALHO */
+.cabecalho {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,248,243,.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--borda);
+}
+.faixa {
+  max-width: var(--largura); margin: 0 auto; padding: .7rem 1.25rem;
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.marca { display: flex; align-items: center; gap: .7rem; text-decoration: none; margin-right: auto; }
+.marca__simbolo { width: 46px; height: auto; display: block; }
+.marca__texto { display: flex; flex-direction: column; line-height: 1; font-family: var(--fonte-titulo); }
+.marca__texto strong { font-size: 1.32rem; font-weight: 700; letter-spacing: .01em; color: var(--grafite); }
+.marca__texto em {
+  font-style: normal; font-size: .615rem; font-weight: 500;
+  letter-spacing: .34em; color: var(--dourado); margin-top: 3px;
+}
+
+.navegacao { display: flex; gap: 1.6rem; }
+.navegacao a {
+  font-size: .93rem; font-weight: 500; text-decoration: none; color: var(--texto);
+  position: relative; padding: .25rem 0;
+}
+.navegacao a::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px;
+  background: var(--dourado); transition: right var(--transicao);
+}
+.navegacao a:hover::after { right: 0; }
+
+.menu-botao {
+  display: none; flex-direction: column; gap: 5px; background: none; border: 0;
+  padding: .5rem; cursor: pointer;
+}
+.menu-botao span { width: 24px; height: 2px; background: var(--verde-escuro); border-radius: 2px; transition: var(--transicao); }
+.menu-botao[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-botao[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-botao[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* -------------------------------------------------------------------- HERO */
+.hero {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 78% 8%, rgba(115,121,55,.5) 0%, transparent 55%),
+    radial-gradient(90% 70% at 12% 95%, rgba(172,137,42,.28) 0%, transparent 60%),
+    var(--verde-fundo);
+  color: var(--creme);
+  padding: clamp(4rem, 11vw, 7.5rem) 1.25rem clamp(8rem, 15vw, 11rem);
+}
+/* Marca d'água do símbolo, como no papel timbrado do manual.
+
+   Por que usamos o arquivo _creme.svg e não uma máscara colorida pelo CSS:
+   duas armadilhas medidas em 09/08/2026.
+   1) SVG com fill="currentColor" só obedece o CSS quando entra INLINE no HTML.
+      Carregado por <img> ou background-image, ele ignora a página e cai no
+      preto — foi o defeito que apareceu no rodapé no primeiro print.
+   2) A saída óbvia (mask-image + background-color) é pior: máscara com SVG
+      externo NÃO carrega em file://, porque cada arquivo local é uma origem
+      opaca. Funcionaria no servidor e falharia calada na pré-visualização.
+   Por isso a cor vai gravada dentro do arquivo, em variantes geradas pelo
+   01_marca\00_extrair_logo_v1.py. Funciona nos dois mundos. */
+.hero::before {
+  content: ''; position: absolute; top: -8%; right: -6%; width: min(58vw, 620px); aspect-ratio: 472/501;
+  background: url('../img/marca/negocie_simbolo_creme.svg') center/contain no-repeat;
+  opacity: .07; pointer-events: none;
+}
+.hero__conteudo { position: relative; max-width: var(--largura); margin: 0 auto; }
+.hero__selo {
+  display: inline-block; font-family: var(--fonte-titulo); font-size: .76rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--dourado-claro);
+  border: 1px solid rgba(201,164,69,.4); border-radius: 999px; padding: .4rem 1rem; margin-bottom: 1.6rem;
+}
+.hero h1 { max-width: 16ch; }
+.hero h1 span { color: var(--dourado-claro); }
+.hero__texto { max-width: 52ch; font-size: 1.12rem; color: rgba(243,239,228,.86); margin-bottom: 2.2rem; }
+.hero__texto strong { color: var(--creme); font-weight: 600; }
+.hero__acoes { display: flex; flex-wrap: wrap; gap: .9rem; }
+
+.hero__colinas { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(90px, 14vw, 190px); display: block; }
+.hero__colinas path:first-child { opacity: .55; }
+.hero__colinas path:nth-child(2) { opacity: .5; }
+
+/* ------------------------------------------------------------- CREDENCIAIS */
+.credenciais { background: var(--creme-claro); padding: 0 1.25rem; }
+.credenciais ul {
+  max-width: var(--largura); margin: 0 auto; padding: 2.4rem 0; list-style: none;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.6rem;
+}
+.credenciais li {
+  display: flex; flex-direction: column; gap: .15rem;
+  padding-left: 1.1rem; border-left: 3px solid var(--dourado);
+}
+.credenciais strong { font-family: var(--fonte-titulo); font-size: 1.05rem; color: var(--verde-escuro); }
+.credenciais span { font-size: .87rem; color: var(--texto-suave); line-height: 1.45; }
+
+/* ------------------------------------------------------------------ SEÇÕES */
+.secao { max-width: var(--largura); margin: 0 auto; padding: clamp(3.5rem, 8vw, 6rem) 1.25rem; }
+.secao--creme { max-width: none; background: var(--creme); }
+.secao--creme > * { max-width: var(--largura); margin-left: auto; margin-right: auto; }
+.secao--verde { max-width: none; background: var(--verde-escuro); color: var(--creme); }
+.secao--verde h2 { color: #fff; }
+.secao--verde > * { max-width: var(--largura); margin-left: auto; margin-right: auto; }
+
+.secao__cabeca { margin-bottom: 2.6rem; max-width: 62ch; }
+.olho {
+  font-family: var(--fonte-titulo); font-size: .74rem; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--dourado); margin-bottom: .6rem;
+}
+.secao__texto { color: var(--texto-suave); font-size: 1.02rem; }
+.secao--verde .secao__texto { color: rgba(243,239,228,.8); }
+
+/* ----------------------------------------------------------------- FILTROS */
+.filtros { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2rem; }
+.filtro {
+  background: transparent; border: 1.5px solid var(--borda); border-radius: 999px;
+  padding: .5rem 1.15rem; font-family: var(--fonte-texto); font-size: .9rem; font-weight: 500;
+  color: var(--texto-suave); cursor: pointer; transition: var(--transicao);
+}
+.filtro:hover { border-color: var(--dourado); color: var(--verde-escuro); }
+.filtro--ativo { background: var(--verde-escuro); border-color: var(--verde-escuro); color: #fff; }
+
+/* -------------------------------------------------- GRADE DE IMÓVEIS */
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.8rem; }
+.grade__vazio { text-align: center; color: var(--texto-suave); padding: 3rem 1rem; }
+
+.card {
+  background: #fff; border: 1px solid var(--borda); border-radius: var(--raio);
+  overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: var(--sombra); transition: transform var(--transicao), box-shadow var(--transicao);
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--sombra-alta); }
+.card--vendido { opacity: .82; }
+
+.card__foto { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--creme); }
+/* só a FOTO ocupa o quadro; o selo tem tamanho próprio (ver .card__selo) */
+.card__foto > img.card__imagem { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Sem foto: paisagem da marca, em vez de um retângulo cinza */
+.card__foto--marca {
+  background:
+    linear-gradient(180deg, #1a5b58 0%, var(--verde-escuro) 55%, var(--verde-oliva) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.card__foto--marca::after {
+  content: ''; position: absolute; inset: 0; opacity: .3;
+  background: url('../img/marca/negocie_simbolo_creme.svg') center/34% no-repeat;
+}
+.card__foto--marca .card__semfoto {
+  position: absolute; bottom: .7rem; left: 0; right: 0; text-align: center;
+  font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(243,239,228,.6);
+}
+
+.card__selo {
+  position: absolute; top: .8rem; left: .8rem; z-index: 2;
+  width: 58px; height: 58px; object-fit: contain;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.28));
+}
+.card__exemplo {
+  position: absolute; top: .95rem; right: .8rem; background: var(--grafite); color: #fff;
+  font-family: var(--fonte-titulo); font-size: .64rem; font-weight: 700; letter-spacing: .16em;
+  padding: .28rem .6rem; border-radius: 4px;
+}
+
+.card__corpo { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.card__codigo { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dourado); font-weight: 600; }
+.card__titulo { font-size: 1.15rem; margin: .35rem 0 .3rem; color: var(--verde-escuro); }
+.card__local { font-size: .89rem; color: var(--texto-suave); margin-bottom: .9rem; }
+.card__preco { font-family: var(--fonte-titulo); font-size: 1.42rem; font-weight: 700; color: var(--grafite); margin-bottom: .9rem; }
+.card__preco small { font-size: .78rem; font-weight: 500; color: var(--texto-suave); display: block; letter-spacing: .04em; }
+
+.card__atributos { list-style: none; margin: 0 0 1.2rem; padding: .85rem 0 0; border-top: 1px solid var(--borda);
+  display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; font-size: .85rem; color: var(--texto-suave); }
+.card__atributos li strong { color: var(--texto); font-weight: 600; }
+
+.card__acao { margin-top: auto; }
+.card .botao { width: 100%; justify-content: center; }
+
+/* ---------------------------------------------------------------- SERVIÇOS */
+.servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.6rem; }
+.servico { background: #fff; border: 1px solid var(--borda); border-radius: var(--raio); padding: 1.8rem 1.5rem; }
+.servico img { margin-bottom: 1rem; }
+.servico h3 { color: var(--verde-escuro); }
+.servico p { font-size: .92rem; color: var(--texto-suave); margin: 0; }
+
+/* ------------------------------------------------------------------- SOBRE */
+.sobre { display: grid; grid-template-columns: 1.25fr .85fr; gap: clamp(2rem, 6vw, 4.5rem); align-items: center; }
+.sobre__texto p { color: var(--texto-suave); }
+.sobre__texto .assinatura {
+  font-family: var(--fonte-titulo); font-weight: 600; color: var(--dourado);
+  font-size: .92rem; letter-spacing: .02em; margin-bottom: 1.6rem;
+}
+.sobre__texto strong { color: var(--texto); }
+.sobre__texto .botao { margin-top: .6rem; }
+
+.sobre__retrato {
+  position: relative; aspect-ratio: 4/5; border-radius: var(--raio); overflow: hidden;
+  background: linear-gradient(160deg, var(--verde-escuro), var(--verde-oliva));
+  display: flex; align-items: center; justify-content: center;
+}
+.sobre__retrato img.sobre__foto { width: 100%; height: 100%; object-fit: cover; }
+.sobre__marca {
+  width: 46%; aspect-ratio: 472/501; opacity: .92;
+  background: url('../img/marca/negocie_simbolo_creme.svg') center/contain no-repeat;
+}
+.sobre__legenda {
+  position: absolute; bottom: 1.2rem; left: 1.4rem; margin: 0;
+  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(243,239,228,.75); line-height: 1.4;
+}
+.sobre__legenda strong { font-family: var(--fonte-titulo); font-size: 1.15rem; letter-spacing: .04em; color: #fff; }
+
+/* ------------------------------------------------------------------ PASSOS */
+.passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+.passos li { position: relative; padding-top: .4rem; }
+.passos span {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%; margin-bottom: 1rem;
+  background: var(--dourado); color: var(--verde-escuro);
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.15rem;
+}
+.passos h3 { color: #fff; }
+.passos p { color: rgba(243,239,228,.78); font-size: .93rem; margin: 0; }
+
+/* ---------------------------------------------------------------- ANUNCIAR */
+.anunciar { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.anunciar__texto p { color: var(--texto-suave); }
+.anunciar__lista { list-style: none; padding: 0; margin: 1.4rem 0 0; }
+.anunciar__lista li { position: relative; padding-left: 1.9rem; margin-bottom: .7rem; font-size: .94rem; color: var(--texto); }
+.anunciar__lista li::before {
+  content: ''; position: absolute; left: 0; top: .42em; width: 12px; height: 7px;
+  border-left: 2.5px solid var(--dourado); border-bottom: 2.5px solid var(--dourado); transform: rotate(-45deg);
+}
+
+.formulario {
+  background: #fff; border: 1px solid var(--borda); border-radius: var(--raio);
+  padding: 1.8rem; box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 1rem;
+}
+.formulario label {
+  display: flex; flex-direction: column; gap: .35rem;
+  font-family: var(--fonte-titulo); font-size: .84rem; font-weight: 600; color: var(--verde-escuro);
+}
+.formulario small { font-weight: 400; color: var(--texto-suave); }
+.formulario input, .formulario select, .formulario textarea {
+  font-family: var(--fonte-texto); font-size: .96rem; color: var(--texto);
+  padding: .72rem .85rem; border: 1.5px solid var(--borda); border-radius: 9px;
+  background: var(--creme-claro); transition: var(--transicao); width: 100%;
+}
+.formulario input:focus, .formulario select:focus, .formulario textarea:focus {
+  outline: none; border-color: var(--dourado); background: #fff;
+  box-shadow: 0 0 0 3px rgba(172,137,42,.15);
+}
+.formulario textarea { resize: vertical; }
+.formulario .botao { justify-content: center; margin-top: .4rem; }
+.formulario__aviso { font-size: .78rem; color: var(--texto-suave); text-align: center; margin: 0; }
+
+/* ---------------------------------------------------------------- CONTATOS */
+.contatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.3rem; }
+.contato {
+  display: flex; flex-direction: column; gap: .3rem; text-decoration: none; cursor: pointer;
+  background: #fff; border: 1px solid var(--borda); border-radius: var(--raio);
+  padding: 1.5rem 1.4rem; transition: var(--transicao);
+}
+.contato:hover { border-color: var(--dourado); transform: translateY(-3px); box-shadow: var(--sombra); }
+.contato__rotulo { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dourado); font-weight: 600; }
+.contato strong { font-family: var(--fonte-titulo); font-size: 1.02rem; color: var(--verde-escuro); line-height: 1.4; }
+.contato__acao { font-size: .85rem; color: var(--texto-suave); margin-top: .5rem; }
+
+/* ------------------------------------------------------------------ RODAPÉ */
+.rodape { background: var(--verde-escuro); color: rgba(243,239,228,.75); padding: 3.5rem 1.25rem 2rem; text-align: center; }
+.rodape__topo { max-width: var(--largura); margin: 0 auto 2rem; }
+.rodape__marca {
+  display: block; width: 170px; aspect-ratio: 1025/850; margin: 0 auto;
+  background: url('../img/marca/negocie_lockup_creme.svg') center/contain no-repeat;
+}
+.rodape__lema { font-family: var(--fonte-titulo); font-style: italic; color: var(--dourado-claro); margin-top: 1rem; }
+.rodape__linha { max-width: var(--largura); margin: 0 auto; padding-top: 1.8rem; border-top: 1px solid rgba(243,239,228,.15); font-size: .89rem; }
+.rodape__linha strong { color: var(--creme); }
+.rodape__linha p { margin: .2rem 0; }
+.rodape__miudo { font-size: .78rem; color: rgba(243,239,228,.45); margin: 1.6rem 0 0; }
+
+/* -------------------------------------------------------- ZAP FLUTUANTE */
+.zap-flutuante {
+  position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%; background: var(--zap); color: #fff;
+  display: none; align-items: center; justify-content: center; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(37,211,102,.4);
+}
+.zap-flutuante svg { width: 30px; height: 30px; fill: currentColor; }
+
+/* ------------------------------------------------------------ RESPONSIVO */
+@media (max-width: 900px) {
+  .sobre, .anunciar { grid-template-columns: 1fr; }
+  .sobre__retrato { max-width: 360px; }
+}
+
+@media (max-width: 780px) {
+  .cabecalho__zap { display: none; }
+  .menu-botao { display: flex; }
+  .navegacao {
+    position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: var(--creme-claro); border-bottom: 1px solid var(--borda);
+    padding: .5rem 1.25rem 1.2rem; display: none;
+  }
+  .navegacao[data-aberto="sim"] { display: flex; }
+  .navegacao a { padding: .85rem 0; border-bottom: 1px solid var(--borda); font-size: 1rem; }
+  .navegacao a::after { display: none; }
+  .zap-flutuante { display: flex; }
+  .rodape { padding-bottom: 5.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Imprimir: sem fundo escuro, sem botão flutuante */
+@media print {
+  .cabecalho, .zap-flutuante, .filtros, .formulario { display: none; }
+  body { background: #fff; }
+  .hero, .secao--verde, .rodape { background: #fff !important; color: #000 !important; }
+}
+
+/* =============================================================================
+   PÁGINAS DE DESTINO DO GOOGLE ADS (geradas por 01_gerar_landings_v1.py)
+
+   Diferença de propósito em relação à home: a home apresenta o negócio, a
+   landing responde a UMA busca. Por isso ela não tem menu — quem chegou por
+   "fazenda à venda em jataí" precisa de uma ação possível, não de sete saídas.
+   ========================================================================== */
+
+.cabecalho--landing .faixa { gap: 1rem; }
+.cabecalho__creci {
+  margin-left: auto; margin-right: .6rem;
+  font-family: var(--fonte-titulo); font-size: .82rem; font-weight: 600; color: var(--dourado);
+}
+
+.hero--landing { padding-top: clamp(3rem, 8vw, 5.5rem); }
+.hero--landing h1 { max-width: 18ch; }
+
+.hero__bullets { list-style: none; padding: 0; margin: 0 0 2.2rem; max-width: 54ch; }
+.hero__bullets li {
+  position: relative; padding-left: 2rem; margin-bottom: .7rem;
+  color: rgba(243,239,228,.9); font-size: 1.02rem;
+}
+.hero__bullets li::before {
+  content: ''; position: absolute; left: 0; top: .45em; width: 13px; height: 7px;
+  border-left: 2.5px solid var(--dourado-claro); border-bottom: 2.5px solid var(--dourado-claro);
+  transform: rotate(-45deg);
+}
+
+.hero__miudo { margin-top: 1.2rem; font-size: .86rem; color: rgba(243,239,228,.6); }
+
+/* ------------------------------------------------------------------- FAQ
+   Não é enfeite: conteúdo em texto é o que o Google lê para julgar se a página
+   responde à busca — e é onde a objeção morre antes de custar um clique. */
+.faq { display: grid; gap: .8rem; max-width: 820px; }
+.faq__item {
+  background: #fff; border: 1px solid var(--borda); border-radius: var(--raio);
+  padding: 1.1rem 1.4rem; transition: var(--transicao);
+}
+.faq__item[open] { border-color: var(--dourado); box-shadow: var(--sombra); }
+.faq__item summary {
+  cursor: pointer; list-style: none; font-family: var(--fonte-titulo);
+  font-weight: 600; font-size: 1.02rem; color: var(--verde-escuro);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: '+'; font-size: 1.5rem; font-weight: 400; color: var(--dourado);
+  line-height: 1; flex: none; transition: transform var(--transicao);
+}
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item p { margin: .9rem 0 0; color: var(--texto-suave); font-size: .96rem; }
+
+/* -------------------------------------------------------- CHAMADA FINAL */
+.chamada-final { text-align: center; }
+.chamada-final h2 { color: #fff; }
+.chamada-final p { color: rgba(243,239,228,.82); margin-bottom: 1.8rem; }
+.chamada-final .botao--zap { background: var(--dourado); color: var(--verde-escuro); }
+.chamada-final .botao--zap:hover { background: var(--dourado-claro); }
+
+.rodape__linha a { color: var(--dourado-claro); }
+
+@media (max-width: 780px) {
+  .cabecalho__creci { display: none; }
+  .cabecalho--landing .botao--zap { display: inline-flex; margin-left: auto; }
+}
