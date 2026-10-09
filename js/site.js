@@ -83,7 +83,7 @@
       ? '<img class="card__imagem" src="' + limpo(imovel.fotos[0]) + '" alt="' + limpo(imovel.titulo) + '" loading="lazy">'
       : '<span class="card__semfoto">fotos no WhatsApp</span>';
 
-    var mensagem = 'Olá, Cynara! Vi no site o imóvel ' + imovel.codigo +
+    var mensagem = 'Olá, Negocie Imobiliária! Vi no site o imóvel ' + imovel.codigo +
       ' (' + imovel.titulo + ') e queria saber mais.';
 
     var artigo = document.createElement('article');
@@ -107,7 +107,7 @@
         (atributos.length ? '<ul class="card__atributos">' + atributos.join('') + '</ul>' : '') +
         '<div class="card__acao">' +
           (imovel.situacao === 'vendido'
-            ? '<a class="botao botao--zap" data-zap="Olá, Cynara! Vi que o ' + limpo(imovel.codigo) +
+            ? '<a class="botao botao--zap" data-zap="Olá, Negocie Imobiliária! Vi que o ' + limpo(imovel.codigo) +
               ' foi vendido. Você tem algo parecido?">Quero algo parecido</a>'
             : '<a class="botao botao--zap" data-zap="' + limpo(mensagem) + '">Tenho interesse</a>') +
         '</div>' +
@@ -130,7 +130,7 @@
     if (lista.length === 0 && vazio) {
       vazio.innerHTML =
         'Estamos preparando a vitrine com os imóveis desta semana. ' +
-        '<a data-zap="Olá, Cynara! Vi o site e quero saber quais imóveis você tem agora.">' +
+        '<a data-zap="Olá, Negocie Imobiliária! Vi o site e quero saber quais imóveis você tem agora.">' +
         'Fale comigo</a> que eu te mando as opções na hora.';
       // ⚠ ligarLinksZap(document) já rodou no DOMContentLoaded, ANTES daqui:
       // sem esta linha o "Fale comigo" vira link morto — e numa vitrine vazia
@@ -193,7 +193,7 @@
       var d = new FormData(form);
 
       var linhas = [
-        'Olá, Cynara! Quero anunciar um imóvel com você.',
+        'Olá, Negocie Imobiliária! Quero anunciar um imóvel com você.',
         '',
         'Nome: ' + (d.get('nome') || ''),
         'Tipo: ' + (d.get('tipo') || ''),
