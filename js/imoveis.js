@@ -36,13 +36,122 @@
    exemplo   .. true marca o card com a tarja EXEMPLO. APAGUE esta linha (ou
                 troque para false) quando o imóvel for de verdade.
 
-   >>> LISTA VAZIA DE PROPOSITO (10/09/2026): o site foi publicado ANTES     <<<
+   >>> 09/10/2026: vitrine montada dos posts publicos dela (@cynaraleles.imoveis), aprovada por ele. Antes:: o site foi publicado ANTES     <<<
    >>> do primeiro imovel. Cada remessa da Cynara pelo Telegram entra aqui. <<<
    ========================================================================== */
 
 window.IMOVEIS = [
-
-  // Vazio de proposito. O site trata isso: mostra o aviso de "em breve" em vez
-  // de uma grade quebrada. O primeiro imovel entra pela esteira do Telegram.
-
+  {
+    "codigo": "NG01",
+    "titulo": "Casa com 2 salas comerciais",
+    "tipo": "urbano",
+    "bairro": "Centro",
+    "preco": null,
+    "area": null,
+    "unidade": "m²",
+    "quartos": 3,
+    "suites": 1,
+    "vagas": 1,
+    "destaques": [
+      "2 salas comerciais",
+      "quintal",
+      "pra morar e pra comércio"
+    ],
+    "descricao": "3 quartos (1 suíte), duas salas, cozinha, banheiro social, despensa, lavanderia, quintal e garagem, além de 2 salas comerciais.",
+    "situacao": "disponivel",
+    "cidade": "Jataí - GO",
+    "fotos": [
+      "img/imoveis/NG01.jpg"
+    ]
+  },
+  {
+    "codigo": "NG02",
+    "titulo": "Terreno de 300 m² no Flamboyant",
+    "tipo": "urbano",
+    "bairro": "Flamboyant",
+    "preco": null,
+    "area": 300,
+    "unidade": "m²",
+    "quartos": 0,
+    "suites": 0,
+    "vagas": 0,
+    "destaques": [
+      "contra esquina",
+      "aterrado e murado",
+      "perto do Aquarela e do Hamoa"
+    ],
+    "descricao": "Terreno pronto para construir: contra esquina, aterrado e murado, perto de hipermercado e universidade.",
+    "situacao": "disponivel",
+    "cidade": "Jataí - GO",
+    "fotos": [
+      "img/imoveis/NG02.jpg"
+    ]
+  },
+  {
+    "codigo": "NG03",
+    "titulo": "Lançamento: torre única de 29 andares",
+    "tipo": "lancamento",
+    "bairro": "Vista do espelho d'água",
+    "preco": null,
+    "area": null,
+    "unidade": "m²",
+    "quartos": 0,
+    "suites": 0,
+    "vagas": 0,
+    "destaques": [
+      "176 apartamentos",
+      "vista para o espelho d'água",
+      "energia solar"
+    ],
+    "descricao": "Torre única de 29 pavimentos e 176 apartamentos, com isolamento acústico, fechadura digital e vaga com carregador de carro elétrico.",
+    "situacao": "disponivel",
+    "cidade": "Jataí - GO",
+    "fotos": [
+      "img/imoveis/NG03.jpg"
+    ]
+  },
+  {
+    "codigo": "NG04",
+    "titulo": "Brisas Habitat — apartamentos de 1 ou 3 suítes",
+    "tipo": "lancamento",
+    "bairro": "Brisas Habitat",
+    "preco": null,
+    "area": null,
+    "unidade": "m²",
+    "quartos": 0,
+    "suites": 0,
+    "vagas": 0,
+    "destaques": [
+      "1 ou 3 suítes",
+      "81 a 111 m²",
+      "lançamento"
+    ],
+    "descricao": "Lançamento na região mais valorizada de Jataí: apartamentos de 1 ou 3 suítes, de 81 a 111 m².",
+    "situacao": "disponivel",
+    "cidade": "Jataí - GO",
+    "fotos": [
+      "img/imoveis/NG04.jpg"
+    ]
+  },
+  {
+    "codigo": "NG05",
+    "titulo": "Brisas 111 — lotes da 3ª etapa",
+    "tipo": "lancamento",
+    "bairro": "Brisas 111",
+    "preco": null,
+    "area": 300,
+    "unidade": "m² (a partir de)",
+    "quartos": 0,
+    "suites": 0,
+    "vagas": 0,
+    "destaques": [
+      "financiamento direto com a construtora"
+    ],
+    "descricao": "Terceira e última etapa do Brisas 111: lotes a partir de 300 m², com financiamento direto com a construtora.",
+    "situacao": "disponivel",
+    "cidade": "Jataí - GO",
+    "fotos": [
+      "img/imoveis/NG05.jpg"
+    ]
+  }
 ];
