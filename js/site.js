@@ -231,7 +231,8 @@
         card.hidden = !mostra;
         if (mostra) visiveis++;
       });
-      if (vazio && lista.length) vazio.hidden = visiveis > 0;
+      // vitrine vazia: 0 visiveis -> o aviso de "preparando" (o unico Fale comigo da grade) aparece
+      if (vazio) vazio.hidden = visiveis > 0;
     }
     aplicar();
   }
