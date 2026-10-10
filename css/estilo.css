@@ -198,7 +198,25 @@ img, svg { max-width: 100%; }
   color: var(--texto-suave); cursor: pointer; transition: var(--transicao);
 }
 .filtro:hover { border-color: var(--dourado); color: var(--verde-escuro); }
-.filtro--ativo { background: var(--verde-escuro); border-color: var(--verde-escuro); color: #fff; }
+.filtro--ativo, .filtro--ativo:hover { background: var(--verde-escuro); border-color: var(--verde-escuro); color: #fff; }
+.card__preco .card__sufixo { display: inline; font-size: .8em; font-weight: 500; color: var(--texto-suave); margin-left: .15rem; }
+
+/* [hidden] tem que vencer o display:flex do .card e do .filtros: sem isto o filtro
+   marcava o card como escondido e ele continuava na tela (achado 10/10/2026). */
+[hidden] { display: none !important; }
+
+/* Busca da vitrine (LEGO, 10/10/2026): montada pelo site.js a partir dos dados */
+.filtros { flex-direction: column; align-items: stretch; }
+.filtros__tipos { display: flex; flex-wrap: wrap; gap: .55rem; }
+.busca { display: flex; flex-wrap: wrap; gap: .8rem; }
+.busca__campo { display: flex; flex-direction: column; gap: .25rem; flex: 1 1 180px; min-width: 0;
+  font-size: .78rem; font-weight: 600; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .04em; }
+.busca__campo--texto { flex: 2 1 240px; }
+.busca__campo input, .busca__campo select {
+  width: 100%; max-width: 100%; font: inherit; font-size: .95rem; font-weight: 400; text-transform: none; letter-spacing: 0;
+  color: var(--texto); background: #fff; border: 1.5px solid var(--borda); border-radius: 10px; padding: .55rem .8rem;
+}
+.busca__campo input:focus, .busca__campo select:focus { outline: none; border-color: var(--dourado); }
 
 /* -------------------------------------------------- GRADE DE IMÓVEIS */
 .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.8rem; }
