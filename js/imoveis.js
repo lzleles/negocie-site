@@ -41,8 +41,39 @@
    ========================================================================== */
 
 window.IMOVEIS = [
-
-  // Vazio de proposito. O site trata isso: mostra o aviso de "em breve" em vez
-  // de uma grade quebrada. O primeiro imovel entra pela esteira do Telegram.
-
+  {
+    "codigo": "NG01",
+    "titulo": "Casa 3 quartos",
+    "tipo": "casa",
+    "finalidade": "venda",
+    "bairro": "Central",
+    "preco": 670000,
+    "area": 176,
+    "unidade": "m² construídos",
+    "quartos": 3,
+    "suites": 1,
+    "vagas": 1,
+    "destaques": [
+      "Quintal amplo com área coberta e edícula com cozinha e despensa",
+      "Terreno de 348 m²",
+      "1 banheiro social",
+      "2 cômodos onde funcionava um consultório: dá pra montar um comércio na frente da casa",
+      "Excelente estado de conservação"
+    ],
+    "descricao": "Endereço: Rua Capitão Francisco Joaquim Vilela, 1001, bairro Central, Jataí-GO.",
+    "situacao": "novidade",
+    "cidade": "Jataí-GO",
+    "fotos": [
+      "img/imoveis/NG01-01.jpg",
+      "img/imoveis/NG01-02.jpg",
+      "img/imoveis/NG01-03.jpg",
+      "img/imoveis/NG01-04.jpg",
+      "img/imoveis/NG01-05.jpg",
+      "img/imoveis/NG01-06.jpg",
+      "img/imoveis/NG01-07.jpg",
+      "img/imoveis/NG01-08.jpg",
+      "img/imoveis/NG01-09.jpg",
+      "img/imoveis/NG01-10.jpg"
+    ]
+  }
 ];
